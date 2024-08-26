@@ -120,3 +120,77 @@ displayRandomQuote();
 // Set an interval to change the quote every 5 minutes (300000 milliseconds)
 setInterval(displayRandomQuote, 4000);
 
+document.addEventListener('DOMContentLoaded', function() {
+    const calendarEl = document.getElementById('calendar');
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        editable: true,
+        selectable: true,
+        events: loadTasksFromLocalStorage(),
+        eventClick: function(info) {
+            const newTaskName = prompt('Edit Task Name:', info.event.title);
+           // const newTaskDescription = prompt('Edit Task Description:', info.event.extendedProps.description);
+
+            if (newTaskName !== null) {
+                info.event.setProp('title', newTaskName);
+              //  info.event.setExtendedProp('description', newTaskDescription);
+                updateTaskInLocalStorage(info.event.id, newTaskName, newTaskDescription);
+            }
+
+            if (confirm('Do you want to delete this task?')) {
+                info.event.remove();
+                deleteTaskFromLocalStorage(info.event.id);
+            }
+        }
+    });
+    calendar.render();
+
+    document.getElementById('taskForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const taskName = document.getElementById('taskName').value;
+        // const taskDescription = document.getElementById('taskDescription').value;
+        const taskDate = document.getElementById('taskDate').value;
+
+        const task = {
+            id: Date.now(),
+            title: taskName,
+            start: taskDate,
+           //  description: taskDescription
+        };
+
+        saveTaskToLocalStorage(task);
+        calendar.addEvent(task);
+
+        document.getElementById('taskForm').reset();
+    });
+});
+
+function saveTaskToLocalStorage(task) {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function loadTasksFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('tasks')) || [];
+}
+
+function updateTaskInLocalStorage(id, newName, newDescription) {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const taskIndex = tasks.findIndex(task => task.id == id);
+    
+    if (taskIndex !== -1) {
+        tasks[taskIndex].title = newName;
+      //  tasks[taskIndex].description = newDescription;
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+}
+
+function deleteTaskFromLocalStorage(id) {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const updatedTasks = tasks.filter(task => task.id != id);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+}
+
+

@@ -10,46 +10,94 @@
     <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
     <script src="front.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
-    
+    </head>
 <body>
     <div class = "Header">
     <h1>OptiMize</h1>
     <div class = "buttons">
         <a href="Front Page.html">
         <button type="button">Home</button></a>
-        <button type="button">About Us</button>
-        <button type="button">Motivate Me</button>
-        <button type="button">Notes</button>
+        <a href="Front Page.html#motivation1">
+        <button type="button">Motivation</button></a>
+        <button type="button">Progress</button>
+        <a href="notes/notes.html">
+        <button type="button">Notes</button></a>
         </div>
-        <a href = "login.html"><img src = "login.png" alt = "img of a login icon" width = "50" height="50" style="border-radius: 100px; padding: 40px; margin-left: 100px;"></a>
+        <a href = "login/login.html"><img src = "login.png" alt = "img of a login icon" width = "50" height="50" style="border-radius: 100px; padding: 40px; margin-left: 100px;"></a>
    </div>
+   <hr>
    <div class="mid">
+    <div class="mid1">
    <p>
     Transform your daily routine with our productivity website, a beautifully designed space where organization meets elegance. Seamlessly integrate your tasks, calendar events, and goals into a personalized dashboard, crafted to keep you focused and inspired. With intuitive tools for time management, goal tracking, and daily planning, you'll find clarity and motivation in every moment, effortlessly balancing productivity with peace of mind. Embrace a more organized and fulfilling day with our stunning platform.
    </p>
+   <form id="taskForm">
+    <div class = "label">
+    <label for="taskName">Task Name:</label>
+    <input type="text" id="taskName" name="taskName" required style="font-size: 20px; background-color: #eceff4; margin-bottom: 10px; color:#192764"><br>
+    
+     <label for="taskDate" style="margin-left: 10px;">Add Event:   </label>
+    <input type="date" id="taskDate" name="taskDate" required style="font-size: 20px; background-color: #eceff4;"><br><br> 
+    </div>
+
+    <button type="submit" style="font-size: 20px;" >Add Task</button>
+    </form>
+    </div>
    <div id = "calendar">
    </div>
    </div>
 
    <div class = "options">
-        <a href = "">
+        <a href = "notesandtodo.html">
             <img src = "notebook.jpg" alt = "Picture of a notebook" height= 200px width=200px style="border-radius: 500px;">
         </a>
         <a href="voice.html">
             <img src = "mic.jpg" alt="Picture of a mic" height= 200px width=200px style="border-radius: 500px; ">
         </a>
-        <a href="">
+        <a href="studytech/study.html">
             <img src = "studytechniques.webp" alt="Picture of a student studying" height= 200px width=200px style="border-radius: 500px; ">
         </a>
         <a href="timerandstopwatch.html">
             <img src = "timer.jpg" alt="Picture of an alarm clock" height= 200px width=200px style="border-radius: 500px; ">
         </a>
    </div>
+   <div id = "motivation1">
 <div class = "motivation">
     <h3 id="motivation"></h3>
     <h3 id="author"></h3>
     <script src="front.js"></script>
     </div>
-</html>
-</body>
+</div>
+
+<div class="container">
+    <header>
+        <h1>To-Do List</h1>
+        <p>Your tasks, organized and optimized.</p>
+    </header>
+
+    <section class="task-form">
+        <h2>Create New Task</h2>
+        <form id="taskForm">
+            <input type="text" id="taskName" placeholder="Task name" required>
+            <input type="datetime-local" id="taskDeadline" required>
+            <button type="submit">Add Task</button>
+        </form>
+    </section>
+
+    <section class="task-list">
+        <h2>Your Tasks</h2>
+        <ul id="tasks">
+            <!-- Tasks will be dynamically inserted here -->
+        </ul>
+    </section>
+
+    <section class="chart-section">
+        <h2>Task Completion Chart</h2>
+        <canvas id="completionChart"></canvas>
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="deadline.js"></script>
+    </body>
 </html>

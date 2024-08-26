@@ -1,0 +1,74 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #bdcbe7;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.background-image img {
+    
+    opacity: 0.2; /* adjust opacity here */
+  }
+
+#studytechnique, #techniqueDescription {
+    
+    padding: 20px;
+    width: 900px;
+    margin: 20px auto;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    line-height: 2.6;
+}
+
+#studytechnique {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+th {
+    display: block;
+  }
+
+#techniqueDescription {
+    font-size: 28px;
+    font-family:"Dancing Script",cursive;
+    text-align: justify;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-family: "Dancing Script", cursive;
+    /* font-weight: bold; */
+    font-weight: 900;
+    background-color: #1976D2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    background-color: #1565C0;
+}
+
+
+@media (max-width: 500px) {
+    #studytechnique, #techniqueDescription {
+        width: 90%;
+    }
+}

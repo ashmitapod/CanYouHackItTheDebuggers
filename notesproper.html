@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Notes</title>
+    <link rel="stylesheet" href="notesproper.css">
+</head>
+<body>
+    <div class="container">
+        <h1> Notes</h1>
+        
+        <div class="note-section">
+            <textarea id="noteInput" placeholder="Write your note here..."></textarea>
+            <button onclick="addNote()">Add Note</button>
+        </div>
+
+        <div class="notes-list">
+            <h2>Your Notes</h2>
+            <ul id="notes">
+                <!-- Dynamic notes will appear here -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="notesproper.js"></script>
+</body>
+</html>
